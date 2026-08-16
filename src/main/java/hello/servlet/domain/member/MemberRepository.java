@@ -6,18 +6,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class MemberRepository {
+public enum MemberRepository {
+    INSTANCE;
+
     private final Map<Long, Member> store = new ConcurrentHashMap<>();
     private final AtomicLong sequence = new AtomicLong();
 
-    private static final MemberRepository instance = new MemberRepository();
-
     public static MemberRepository getInstance() {
-        return instance;
-    }
-
-    private MemberRepository() {
-
+        return INSTANCE;
     }
 
     public Member save(Member member) {
