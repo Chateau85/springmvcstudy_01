@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- Values written by these HTML examples pass through Spring's HtmlUtils.htmlEscape. -->
+    <Match>
+        <Class name="hello.servlet.basic.HelloServlet"/>
+        <Bug pattern="XSS_SERVLET"/>
+    </Match>
+    <Match>
+        <Class name="hello.servlet.web.servlet.MemberListServlet"/>
+        <Bug pattern="XSS_SERVLET"/>
+    </Match>
+    <Match>
+        <Class name="hello.servlet.web.servlet.MemberSaveServlet"/>
+        <Bug pattern="XSS_SERVLET"/>
+    </Match>
+
+    <!-- The response is serialized by Jackson and served as application/json, not HTML. -->
+    <Match>
+        <Class name="hello.servlet.basic.response.ResponseJsonServlet"/>
+        <Bug pattern="XSS_SERVLET"/>
+    </Match>
+</FindBugsFilter>
