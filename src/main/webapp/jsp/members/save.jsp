@@ -8,6 +8,7 @@ To change this template use File | Settings | File Templates.
 
 <%@ page import="hello.servlet.domain.member.Member" %>
 <%@ page import="hello.servlet.domain.member.MemberRepository" %>
+<%@ page import="org.springframework.web.util.HtmlUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     //request, response 사용 가능
@@ -29,7 +30,7 @@ To change this template use File | Settings | File Templates.
 <ul>
     <li>id=<%=member.getId()%>
     </li>
-    <li>username=<%=member.getUsername()%>
+    <li>username=<%=HtmlUtils.htmlEscape(member.getUsername())%>
     </li>
     <li>age=<%=member.getAge()%>
     </li>

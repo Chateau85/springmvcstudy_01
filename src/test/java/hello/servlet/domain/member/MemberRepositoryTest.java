@@ -1,13 +1,11 @@
 package hello.servlet.domain.member;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemberRepositoryTest {
     MemberRepository memberRepository = MemberRepository.getInstance();
@@ -45,6 +43,15 @@ class MemberRepositoryTest {
         //then
         assertThat(result.size()).isEqualTo(2);
         assertThat(result).contains(member1, member2);
+    }
 
+    @Test
+    void clearStoreResetsSequence() {
+        memberRepository.save(new Member("first", 20));
+
+        memberRepository.clearStore();
+        Member savedMember = memberRepository.save(new Member("second", 30));
+
+        assertThat(savedMember.getId()).isEqualTo(1L);
     }
 }

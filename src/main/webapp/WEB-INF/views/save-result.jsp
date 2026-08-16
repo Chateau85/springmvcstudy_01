@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
     <title>Title</title>
@@ -13,9 +14,9 @@
 <body>
 성공
 <ul>
-    <li>id=${member.id}</li>
-    <li>username=${member.username}</li>
-    <li>age=${member.age}</li>
+    <li>id=<c:out value="${member.id}"/></li>
+    <li>username=<c:out value="${member.username}"/></li>
+    <li>age=<c:out value="${member.age}"/></li>
 </ul>
 <a href="/index.html">메인</a>
 </body>
